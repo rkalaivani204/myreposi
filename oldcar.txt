@@ -1,0 +1,67 @@
+import pandas as pd
+import numpy as np
+cols = ['symboling','normalized-losses','make','fuel-type','aspiration']
+data = pd.read_csv("C:/Users/CSE WPT/Downloads/archive (6)/datacar.csv")
+print(data.shape)
+data.head()
+
+data = data.replace("?",np.NaN)
+data.head(20)
+
+data.isnull().any().any()
+
+data.isnull().sum()
+
+avg_Price = data['Price'].astype("float").mean()
+avg_Price
+
+data['Price'].replace(np.NaN,avg_Price,inplace = True)
+data['Price']
+
+avg_Price = data['Price'].astype("float").mean(axis = 0)
+avg_Price
+
+data.isnull().sum()
+
+data['Price'].dtype
+
+data['Driven Kilometers'].value_counts()
+
+data['Varient'].value_counts().idxmax()
+
+data['Varient'].replace(np.NaN,'VDI',inplace=True)
+data.head()
+
+before_rows = data.shape[0]
+data.dropna(subset=['Price'],axis = 0,inplace=True)
+after_rows = data.shape[0]
+print("number of dropped rows:{}".format(before_rows-after_rows))
+data.reset_index(drop = True,inplace = True)
+
+data.shape
+
+data.dtypes
+
+data[['Price']] = data[['Price']].astype("float")
+data
+
+data['Varient']=235/data['Varient']
+data.rename(columns= {'Varient': 'Varient/100km'},inplace=True)
+data.head()
+
+data['Manufacture Year'] = data['Manufacture Year']/data['Manufacture Year'].max()
+data.head()
+
+data['Manufacture Year'] = data['Manufacture Year'].astype(int,copy=True)
+data.head()
+
+import matplotlib.pyplot as plt
+plt.hist(data['Driven Kilometers'])
+plt.xlabel("Price")
+plt.ylabel("Number of Owner")
+plt.title("Brand")
+
+import numpy as np
+bins = np.linspace(min(data['Price']),max(data['Price']),4)
+bins
+
