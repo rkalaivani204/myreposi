@@ -1,0 +1,40 @@
+import pandas as pd
+df = pd.read_csv("C:/Users/admin/Downloads/archive (13)/titanic.csv")
+df
+
+df.describe()
+
+df.info()
+
+df.isnull().sum()
+
+df['Cabin']=df['Cabin'].fillna(df['Cabin'].mode()[0])
+df
+
+df.head()
+
+df.head().isna()
+
+df['Age'].fillna(method='ffill',inplace = True)
+df
+
+df['Age'].fillna(method='ffill',limit=1,inplace = True)
+df['Age'].fillna(method='bfill',inplace = True)
+
+df.head().isna()
+
+df.dropna(inplace = True)
+df.isnull().sum()
+
+print("Null Values")
+print(df.isnull().sum())
+
+
+median = df.Age.median()
+median
+
+def impute_naa(df,variable,median):
+    df[variable+"_median"]=df[variable].fillna(median)
+    impute_nan(df,'Age',median)
+df.head()
+
