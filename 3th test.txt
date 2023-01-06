@@ -1,0 +1,123 @@
+from sklearn import tree
+x = [[2],[3],[4],[5],[6]]
+y = [60,70,80,90,95]
+std = tree.DecisionTreeRegressor()
+std.fit(x,y)
+score = std.predict([[5]])
+print(score)
+
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.datasets import load_boston
+from sklearn.datasets import load_breast_cancer
+from sklearn.datasets import load_iris
+from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import confusion_matrix
+from sklearn.metrics import precision_score
+from sklearn.metrics import accuracy_score
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.ensemble import RandomForestClassifier
+from sklearn import tree
+from sklearn.svm import SVC
+
+
+df
+
+bostondata = load_boston()
+bostondata
+
+df = pd.DataFrame(bostondata.data,columns = bostondata.feature_names)
+df
+
+df['PRICE']=bostondata.target
+df
+
+x = df.drop('PRICE',axis=1)
+y = df['PRICE']
+x_train,x_test,y_train,y_test = train_test_split(x,y,test_size=0.3,random_state = 5)
+
+lm = LinearRegression()
+lm
+
+lm.fit(x_train,y_train)
+
+model.fit(x_train,y_train)
+
+model = RandomForestRegressor(n_estimators=100)
+model.fit(x_train,y_train)
+accuracy = model.score(x_test,y_test)
+accuracy
+
+import pandas as pd
+import numpy as np
+df = pd.read_csv("C:/Users/CSE WPT/Downloads/archive (16)/odb.csv")
+df.head()
+
+p1df= df.drop(columns = 'Span' , axis=1)
+
+p1df= df.drop(columns = 'HS' , axis=1)
+
+p1df= df.drop(columns = '6s' , axis=1)
+
+p1df= df.drop(columns = '4s' , axis=1)
+
+p1df.info()
+
+p1df.groupby('Player').mean()
+
+
+
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.datasets import load_boston
+from sklearn.datasets import load_breast_cancer
+from sklearn.datasets import load_iris
+from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import confusion_matrix
+from sklearn.metrics import precision_score
+from sklearn.metrics import accuracy_score
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.ensemble import RandomForestClassifier
+from sklearn import tree
+from sklearn.svm import SVC
+
+cancer = load_breast_cancer()
+x = cancer['data']
+y = cancer['target']
+
+x_train, x_test,y_train, y_test = train_test_split(x,y, test_size = 0.3)
+model = RandomForestClassifier(n_estimators=100)
+
+model.fit(x_train,y_train)
+
+predictions = model.predict(x_test)
+
+accuracy = model.score(x_test,y_test)
+print("Accuracy: %.2f" % accuracy)
+
+iris = load_iris()
+x = iris['data']
+y = iris['target']
+x_train,x_test,y_train,y_test = train_test_split(x,y,test_size=0.3,random_state = 5)
+model = LinearRegression()
+model.fit(x_train,y_train)
+accuracy = model.score(x_test,y_test)
+accuracy
+
+cancer = load_breast_cancer()
+x = cancer['data']
+y = cancer['target']
+
+x_train, x_test,y_train, y_test = train_test_split(x,y, test_size = 0.3)
+
+model = SVC()
+model.fit(x_train,y_train)
+prediction = model.predict(x_test)
+
+accuracy = model.score(x_test,y_test)
+accuracy
+
