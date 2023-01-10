@@ -1,3 +1,10 @@
 from sklearn.preprocessing import LabelEncoder
 le = LabelEncoder()
 y = le.fit_transform(y)
+
+from sklearn import tree
+std=tree.DecisionTreeRegressor()
+std.fit(x_train,y_train)
+
+accuracy=lm.score(x_test,y_test)
+accuracy
