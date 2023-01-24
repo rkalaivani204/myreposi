@@ -1,0 +1,60 @@
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import train_test_split
+
+df =pd.read_csv("C:/Users/RAMBO/Downloads/sea.csv")
+df
+
+mean = df['Weight'].mean()
+mean
+
+mode = df['Height'].mode()
+mode
+
+std =df['Width'].std()
+std
+
+m=df["Weight"].fillna(df["Weight"].std(),inplace=True)
+m
+#data["feature1"].fillna(data["feature1"].mean(), inplace=True
+
+
+
+x=df.iloc[:,1:]
+y=df.loc[:,'Species']
+
+x_train,x_test,y_train,y_test=train_test_split(x,y)
+
+model = LogisticRegression()
+model.fit(x_train,y_train)
+
+accuracy = model.score(x_test,y_test)
+accuracy
+
+# Implement the model as per given requirement
+
+y_pred = model.predict(x_test)
+
+from sklearn.metrics import confusion_matrix
+cm=confusion_matrix(y_test,y_pred)
+
+from sklearn import metrics
+
+# calculate accuracy
+accuracy = metrics.accuracy_score(y_test, y_pred)
+print("Accuracy:", accuracy)
+
+
+import seaborn as sns
+sns.heatmap(cm,annot=True)
+
+
+import seaborn as sns
+sns.scatterplot(x='Height',y='Width',data=df)
+plt.show()
+
+
+
+
